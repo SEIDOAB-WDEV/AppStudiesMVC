@@ -1,20 +1,24 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using AppStudiesMVC.Models;
+using Services;
 
 namespace AppStudiesMVC.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    IQuoteService _service = null;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IQuoteService service)
     {
+        _service = service;
         _logger = logger;
     }
 
     public IActionResult Index()
     {
+        var nr = _service.NrOfQuotes();
         return View();
     }
 
