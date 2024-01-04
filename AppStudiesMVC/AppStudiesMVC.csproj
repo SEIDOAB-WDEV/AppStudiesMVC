@@ -24,8 +24,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\Model\" />
+    <None Remove="SeidoHelpers\" />
+    <None Remove="Views\FormValidation\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Model\" />
+    <Folder Include="SeidoHelpers\" />
+    <Folder Include="Views\FormValidation\" />
   </ItemGroup>
 </Project>

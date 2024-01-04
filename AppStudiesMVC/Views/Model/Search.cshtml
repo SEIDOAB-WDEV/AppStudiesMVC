@@ -1,4 +1,5 @@
-﻿@{
+﻿@model vwmSearch
+@{
     ViewData["Title"] = "Study Search";
 }
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -12,7 +13,7 @@
         <div class="col-md-8 ">
             <form class="d-flex mt-3 mt-lg-0" method="post">
 
-                <input name="SearchFilter" id="SearchFilter" value="@Model.SearchFilter" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input asp-for="SearchFilter" value="@Model.SearchFilter" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button asp-controller="Model" asp-action="Find" class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
