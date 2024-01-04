@@ -22,6 +22,13 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
+    public IActionResult IndexPost()
+    {
+        var nr = _service.NrOfQuotes();
+        return View();
+    }
+
     public IActionResult Privacy()
     {
         return View();
