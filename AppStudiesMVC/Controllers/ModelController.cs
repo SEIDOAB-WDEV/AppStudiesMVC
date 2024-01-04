@@ -42,7 +42,7 @@ public class ModelController : Controller
         vwm.SearchFilter = Request.Query["search"];
 
         //Pagination
-        UpdatePagination(vwm);
+        vwm.UpdatePagination(_service);
 
         //Use the Service
         vwm.Quotes = _service.ReadQuotes(vwm.ThisPageNr, vwm.PageSize, vwm.SearchFilter);
@@ -50,6 +50,17 @@ public class ModelController : Controller
         return View(vwm);
     }
 
+    [HttpPost]
+    public IActionResult Find(vwmSearch vwm)
+    {
+        //Pagination
+        vwm.UpdatePagination(_service);
+
+        //Use the Service
+        vwm.Quotes = _service.ReadQuotes(vwm.ThisPageNr, vwm.PageSize, vwm.SearchFilter);
+
+        return View("Search", vwm);
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
@@ -57,6 +68,7 @@ public class ModelController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
+    /*
     private void UpdatePagination(vwmSearch vwm)
     {
         //Pagination
@@ -65,5 +77,6 @@ public class ModelController : Controller
         vwm.NextPageNr = Math.Min(vwm.NrOfPages - 1, vwm.ThisPageNr + 1);
         vwm.PresentPages = Math.Min(3, vwm.NrOfPages);
     }
+    */
 }
 

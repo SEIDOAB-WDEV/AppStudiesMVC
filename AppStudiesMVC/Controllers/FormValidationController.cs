@@ -5,28 +5,17 @@ using Services;
 
 namespace AppStudiesMVC.Controllers;
 
-public class HomeController : Controller
+public class FormValidationController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<FormValidationController> _logger;
     IQuoteService _service = null;
 
-    public HomeController(ILogger<HomeController> logger, IQuoteService service)
+    public FormValidationController(ILogger<FormValidationController> logger, IQuoteService service)
     {
         _service = service;
         _logger = logger;
     }
 
-    public IActionResult Index()
-    {
-        var nr = _service.NrOfQuotes();
-        return View();
-    }
-
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

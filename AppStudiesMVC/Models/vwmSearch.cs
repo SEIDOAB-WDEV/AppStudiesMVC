@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Services;
 
 namespace AppStudiesMVC.Models
 {
@@ -22,6 +23,15 @@ namespace AppStudiesMVC.Models
         [BindProperty]
         public string SearchFilter { get; set; }
 
+
+        public void UpdatePagination(IQuoteService service)
+        {
+            //Pagination
+            NrOfPages = (int)Math.Ceiling((double)service.NrOfQuotes(SearchFilter) / PageSize);
+            PrevPageNr = Math.Max(0,ThisPageNr - 1);
+            NextPageNr = Math.Min(NrOfPages - 1, ThisPageNr + 1);
+            PresentPages = Math.Min(3, NrOfPages);
+        }
         public vwmSearch()
 		{
 		}
