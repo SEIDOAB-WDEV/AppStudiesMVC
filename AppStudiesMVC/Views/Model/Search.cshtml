@@ -11,8 +11,9 @@
     <div class="row mb-1 text-center">
         <div class="col-md-8 ">
             <form class="d-flex mt-3 mt-lg-0" method="post">
-
-                <input name="SearchFilter" id="SearchFilter" value="@Model.SearchFilter" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+        <!--
+    <input asp-for="SearchFilter" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+        -->
                 <button asp-controller="Model" asp-action="Find" class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

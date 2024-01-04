@@ -50,19 +50,6 @@ public class ModelController : Controller
         return View(vwm);
     }
 
-    [HttpPost]
-    public IActionResult Find(vwmSearch vwm)
-    {
-        //Pagination
-        UpdatePagination(vwm);
-
-        //Use the Service
-        vwm.Quotes = _service.ReadQuotes(vwm.ThisPageNr, vwm.PageSize, vwm.SearchFilter);
-
-        //Page is rendered as the postback is part of the form tag
-        return View("Search", vwm);
-    }
-
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
