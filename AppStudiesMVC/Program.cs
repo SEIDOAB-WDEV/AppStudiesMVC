@@ -37,6 +37,12 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+//Map aliases
+app.MapGet("/hello", () => "Hello world");
+app.MapGet("/lovequotes", () => Results.Redirect("/Model/Search?search=Love"));
+app.MapGet("/workquotes", () => Results.Redirect("/Model/Search?search=work"));
+app.MapGet("/quotes/microsoft", () => Results.Redirect("/Model/Search?search=bill gates"));
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

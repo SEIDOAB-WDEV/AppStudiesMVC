@@ -22,6 +22,8 @@ public class HomeController : Controller
         return View();
     }
 
+    [Route("private")]
+    [Route("home/privacy")]
     public IActionResult Privacy()
     {
         return View();

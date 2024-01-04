@@ -30,16 +30,28 @@ public class ModelController : Controller
 
     //Will execute on a Get request
     [HttpGet]
-    public IActionResult Search()
+    [Route("/Model/Search")]
+    [Route("quotes/{search?}")]
+    public IActionResult Search(string search, string pagenr)
     {
         var vwm = new vwmSearch();
+
+        //Use Route parameters
+        if (int.TryParse(pagenr, out int _pagenr))
+        {
+            vwm.ThisPageNr = _pagenr;
+        }
+        vwm.SearchFilter = search;
+
+        /*
         //Read a QueryParameters
         if (int.TryParse(Request.Query["pagenr"], out int _pagenr))
         {
             vwm.ThisPageNr = _pagenr;
         }
-
+        
         vwm.SearchFilter = Request.Query["search"];
+        */
 
         //Pagination
         vwm.UpdatePagination(_service);
